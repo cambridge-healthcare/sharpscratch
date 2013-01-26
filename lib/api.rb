@@ -35,6 +35,11 @@ module NHSHackDay
     end
 
     namespace :procedures do
+      desc "Returns a list of all procedures"
+      get '/' do
+        Procedure.all.map(&:attributes)
+      end
+
       desc "Returns a single procedure"
       params do
         requires :procedure_id, :type => Integer, :desc => "Procedure identifier"
