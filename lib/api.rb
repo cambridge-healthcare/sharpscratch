@@ -78,10 +78,15 @@ module NHSHackDay
     default_format :json
     format :json
 
+    before do
+      header "Access-Control-Allow-Origin", "*"
+    end
+
     add_swagger_documentation(
       :api_version             => API::VERSION,
       :hide_documentation_path => true,
-      :markdown                => true
+      :markdown                => true,
+      :mount_path              => '/doc'
     )
 
     mount API
