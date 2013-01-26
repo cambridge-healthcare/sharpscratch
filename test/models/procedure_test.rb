@@ -3,7 +3,7 @@ require_relative '../test_helper'
 require 'models/procedure'
 
 describe Procedure do
-  it "is an Ohm::Model" do
-    Procedure.ancestors.must_include Ohm::Model
+  it "includes :id in attributes" do
+    Procedure.create.attributes.must_include :id
   end
 end
