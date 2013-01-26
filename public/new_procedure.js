@@ -1,7 +1,7 @@
 angular.module('SharpScratch', ['ngResource']);
 
 function NewProcedure ($scope, $resource) {
-  $scope.show = true;
+  $scope.show = false;
 
   $scope.steps         = [''];
   $scope.complications = [];
@@ -38,9 +38,5 @@ function NewProcedure ($scope, $resource) {
     }, function () {
       console.log(arguments);
     });
-
-    console.log(steps);
-    console.log(complications);
-    console.log($scope);
   };
 }
