@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../test/fixtures/procedures', __FILE__)
+require File.expand_path('../../lib/nhs_hack_day', __FILE__)
+
+Fixtures::Procedures.all.each do |procedure|
+  Procedure.create(procedure)
+end

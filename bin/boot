@@ -2,4 +2,5 @@
 
 port="${NHSHD_TCP_PORT_DEV:-5000}"
 
+bin/seed &&
 bundle exec shotgun -p "$port" $@
