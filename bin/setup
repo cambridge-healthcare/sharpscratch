@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 
-vendored_gems=$(ls vendor/cache/*gem 2> /dev/null | wc -l)
+bundler_installed=$(which bundler 2> /dev/null)
 
-if [[ $vendored_gems -ne 0 ]]
+if [[ $? -ne 0 ]]
 then
-  bundle install --local
-else
+  gem install bundler
+fi
+
+gems_vendored=$(ls vendor/cache/*gem 2> /dev/null)
+
+if [[ $? -ne 0 ]]
+then
   bundle install &&
   bundle package
+else
+  bundle install --local
 fi
