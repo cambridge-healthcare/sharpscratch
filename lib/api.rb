@@ -50,13 +50,11 @@ module NHSHackDay
 
       desc "Creates a new procedure"
       params do
-        requires :name, :type => String, :desc => "URL-friendly procedure name"
-        requires :title, :type => String, :desc => "Human friendly procedure name"
+        requires :title, :type => String, :desc => "Procedure title"
       end
       post '/' do
         begin
           Procedure.create(
-            :name  => params[:name],
             :title => params[:title]
           ).attributes
         rescue Ohm::UniqueIndexViolation
@@ -66,13 +64,13 @@ module NHSHackDay
     end
 
     namespace :search do
-      desc "Searches across all procedure names"
+      desc "Searches across all procedure titles"
       params do
         requires :term, :type => String, :desc => "Search term"
       end
       get '/:term' do
         Procedure.all.select { |p|
-          p.name.index(/#{params[:term]}/i)
+          p.title.index(/#{params[:term]}/i)
         }.map(&:attributes)
       end
     end
