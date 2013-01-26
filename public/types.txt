@@ -1,0 +1,31 @@
+data types:
+
+Step:
+  .before
+  .during
+  .after
+  .comments
+  .media (pictures, videos)
+  .complications [many, set] Complication
+
+Complication:
+  .steps [many, set] # at which steps it
+  .situation
+  .solution Procedure
+
+Comment:
+
+Consent:
+
+Procedure:
+  .meta:
+    .snomed_ct (number)
+    .opcs (list?)
+    .nhs_choices_api (link?)
+
+  .consent
+  .medical_prods [many, set]
+  .equipment [many, set]
+  .step [many, sequential] Step
+
+User:
