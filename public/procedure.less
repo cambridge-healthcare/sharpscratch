@@ -1,0 +1,45 @@
+@choosen_color: #4591ff;
+
+.procedure {
+  @toc_width: 120px;
+
+  margin-left: @toc_width + 20px;
+
+  .toc {
+    position: fixed;
+    width:    @toc_width;
+    top:      0;
+    left:     0;
+    margin:   10px;
+    padding:  0;
+
+    li {
+      list-style: none;
+      margin:  0;
+      padding: 0;
+    }
+  }
+
+  .step {
+    display:       table-row;
+    margin-bottom: 30px;
+  }
+
+  .active, .rest {
+    vertical-align: top;
+    display: table-cell;
+  }
+
+  .active {
+    border: 1px solid @choosen_color;
+  }
+
+  .active, .alternative {
+    padding: 10px;
+  }
+
+  .alternative.active {
+    background: @choosen_color;
+    color: white;
+  }
+}
