@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-port="${NHSHD_TCP_PORT_DEV:-6000}"
+port="${NHSHD_TCP_PORT_DEV:-5000}"
 
 bundle exec shotgun -p "$port" $@
