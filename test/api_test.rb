@@ -1,21 +1,8 @@
 require_relative 'test_helper'
+require_relative 'fixtures/procedures'
 require 'rack/test'
 
 require 'api'
-
-def lumbar_puncture
-  {
-    :name  => "lumbar-puncture",
-    :title => "Lumbar Puncture"
-  }
-end
-
-def arterial_black_guess_sampling
-  {
-    :name  => "arterial-black-guess-sampling",
-    :title => "Arterial Black Guess Sampling"
-  }
-end
 
 def new_procedure(hash)
   Procedure.create(hash)
@@ -23,6 +10,7 @@ end
 
 module NHSHackDay
   describe API do
+    include Fixtures::Procedures
     include Rack::Test::Methods
 
     def app
