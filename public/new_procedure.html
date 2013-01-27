@@ -1,6 +1,17 @@
-<div class="new_procedure" ng-controller="NewProcedure">
+<div class="new_procedure has_top_banner" ng-controller="NewProcedure">
   <form class="form-horizontal" ng-submit="save()">
-    <legend>New Procedure</legend>
+
+    <div class="top_banner">
+      <div class="cell">
+        <img class="logo" src="logo.svg">
+      </div>
+      <h1 class="cell">New Procedure</h1>
+      <div class="cell">
+        <input type="submit" class="btn-primary btn cell" value="Create">
+      </div>
+      <div class="messages cell" ng-class="message_class" ng-bind="message">
+      </div>
+    </div>
 
     <div class="control-group">
       <label class="control-label">Title</label>
@@ -67,10 +78,6 @@
       <div class="controls">
         <button class="btn" ng-click="inc(complications)">Add a Complication</button>
       </div>
-    </div>
-
-    <div class="form-actions">
-      <input type="submit" class="btn-primary btn" value="Save">
     </div>
   </form>
 </div>

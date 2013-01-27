@@ -27,14 +27,18 @@ function NewProcedure ($scope, $resource, $routeParams) {
   var saver = $resource('/procedures.json');
 
   $scope.save = function () {
+    $scope.message = "Submitting...";
     var steps = get_values('.step_title', '.step_text');
     var complications = get_values('.complication_title',
       '.complication_text');
 
     saver.save({
       title: $scope.title
-    }, function () {
-      console.log(arguments);
+    }, function success (answer) {
+      $scope.message = "Saved.";
+      location.hash = '#/procedure/' + answer.id;
+    }, function error () {
+      $scope.message = "Coudn't submit your procedure. Try different title.";
     });
   };
 }
