@@ -1,5 +1,3 @@
-angular.module('SharpScratch', []);
-
 function Procedure ($scope) {
   $scope.show = false;
 

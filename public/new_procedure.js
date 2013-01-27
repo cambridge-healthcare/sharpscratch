@@ -1,5 +1,3 @@
-angular.module('SharpScratch', ['ngResource']);
-
 function NewProcedure ($scope, $resource) {
   $scope.show = false;
 
