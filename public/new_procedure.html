@@ -1,5 +1,5 @@
 <div class="new_procedure has_top_banner" ng-controller="NewProcedure">
-  <form class="form-horizontal" ng-submit="save()">
+  <form class="form-horizontal">
 
     <div class="top_banner"
       <a href="/index.html" class="cell">
@@ -7,7 +7,7 @@
       </a>
       <h1 class="cell">New Procedure</h1>
       <div class="cell">
-        <input type="submit" class="btn-primary btn cell" value="Create">
+        <input type="submit" class="btn-primary btn cell" value="Create" ng-click="save()">
       </div>
       <div class="message" ng-class="message_class" ng-bind="message">
       </div>
@@ -17,6 +17,20 @@
       <label class="control-label">Title</label>
       <div class="controls">
         <input name="title" ng-model="title" type="text" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Snomed ID</label>
+      <div class="controls">
+        <input name="snomed_id" ng-model="snomed_id" type="text">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Precautions</label>
+      <div class="controls">
+        <textarea name="precautions" ng-model="precautions"></textarea>
       </div>
     </div>
 
@@ -44,9 +58,15 @@
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label">Description</label>
+        <label class="control-label">What to do</label>
         <div class="controls">
-          <textarea name="step_text" class="step_text"></textarea>
+          <textarea name="step_to_do" class="step_to_do"></textarea>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">What to say</label>
+        <div class="controls">
+          <textarea name="step_to_say" class="step_to_say"></textarea>
         </div>
       </div>
     </div>
