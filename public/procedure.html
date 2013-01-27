@@ -1,4 +1,9 @@
-<div class="procedure" ng-controller="Procedure" ng-show="show">
+<div class="procedure" ng-controller="Procedure">
+  <a class="logo" href="/index.html">
+    <img src="logo.svg">
+  </a>
+  <div class="message" ng-bind="message" ng-class="message_class"></div>
+
   <h1>{{ title }}</h1>
 
   <ul class="toc">
