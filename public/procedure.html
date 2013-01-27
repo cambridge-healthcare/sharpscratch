@@ -7,8 +7,9 @@
   <h1>{{ title }}</h1>
 
   <ul class="toc">
+    <li>Precautions</li>
     <li>Consent</li>
-
+    <li>Materials</li>
     <li class="label">Steps:</li>
     <li ng-repeat="step in steps"
         ng-init="active = step.variants[0]">
@@ -16,26 +17,26 @@
     </li>
   </ul>
 
+  <div class="step" id="precautions">
+    <h2>Precautions</h2>
+    <div ng-bind-html-unsafe="marked(precautions||'')"></div>
+  </div>
+
+  <div class="step" id="consent">
+    <h2>Consent</h2>
+    <div ng-bind-html-unsafe="marked(consent||'')"></div>
+  </div>
+
+  <div class="step" id="materials">
+    <h2>Materials</h2>
+    <div ng-bind-html-unsafe="marked(materials||'')"></div>
+  </div>
+
+
   <div class="step" ng-repeat="step in steps" id="step-{{ step.id }}">
-
-    <article class="active">
-      <h2>{{ step.active.title }}</h2>
-      {{ step.active.text }}
-      <h3>What to say?</h3>
-      {{ step.active.say }}
-    </article>
-
-    <div class="rest">
-      <div class="alternatives">
-        <div ng-repeat="variant in step.variants"
-            class="alternative">
-          <div class="points">{{ variant.points }}</div>
-          {{ variant.text }}
-        </div>
-      </div>
-      <div class="comments">
-      </div>
-    </div>
-
+    <h2>{{ step.title }}</h2>
+    <div ng-bind-html-unsafe="marked(step.to_do||'')"></div>
+    <h3>What to say?</h3>
+    <div ng-bind-html-unsafe="marked(step.to_say||'')"></div>
   </div>
 </div>
