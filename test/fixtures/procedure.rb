@@ -1,5 +1,5 @@
 module Fixtures
-  module Procedures
+  module Procedure
     extend self
 
     def all

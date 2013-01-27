@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require_relative 'fixtures/procedures'
 require 'rack/test'
 
 require 'api'

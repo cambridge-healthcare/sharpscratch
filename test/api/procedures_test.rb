@@ -1,5 +1,5 @@
 require_relative '../test_helper'
-require_relative '../fixtures/procedures'
+require_relative '../fixtures/procedure'
 require 'rack/test'
 
 require 'api/procedures'
@@ -11,7 +11,7 @@ end
 module NHSHackDay
   module API
     describe Procedures do
-      include Fixtures::Procedures
+      include Fixtures::Procedure
       include Rack::Test::Methods
 
       def app
