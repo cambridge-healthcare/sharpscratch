@@ -150,11 +150,16 @@
     <h1>Search for a procedure</h1>
     <form class="form-search" ng-submit="search()">
       <input type="text" ng-model="term" class="input-medium search-query" required>
-      <input type="submit" class="btn-primary btn" value="Search">
-      <button ng-show="results" class="btn">Add</button>
+      <input  ng-disabled="!term" type="submit" class="btn-primary btn" value="Search">
     </form>
 
-    <div class="results" ng-show="results">
+    <div class="querying" ng-show="status == 'querying'">Query on it's way...</div>
+
+    <p class="create_text" ng-show="status == 'got_reply'">
+      <button class="btn" ng-click="" ng-disabled="!term">Create</button> a new procedure based on your search.
+    </p>
+
+    <div class="results" ng-show="status == 'got_reply'">
       <a class="result" ng-repeat="result in results"
         ng-bind="result.title" href="#{{result.id}}"></a>
     </div>
