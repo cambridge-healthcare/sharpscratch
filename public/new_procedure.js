@@ -1,8 +1,8 @@
-function NewProcedure ($scope, $resource) {
-  $scope.show = false;
-
+function NewProcedure ($scope, $resource, $routeParams) {
   $scope.steps         = [''];
   $scope.complications = [];
+
+  $scope.title = $routeParams.title;
 
   $scope.inc = function (list) {
     list.push('');

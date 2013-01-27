@@ -9,7 +9,7 @@
   <div class="querying" ng-show="status == 'querying'">Query on it's way...</div>
 
   <p class="create_text" ng-show="status == 'got_reply'">
-    <button class="btn" ng-click="" ng-disabled="!term">Create</button> a new procedure based on your search.
+    <button class="btn" ng-click="create()" ng-disabled="!term">Create</button> a new procedure based on your search.
   </p>
 
   <div class="results" ng-show="status == 'got_reply'">

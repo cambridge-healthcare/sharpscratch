@@ -11,11 +11,7 @@ function Search ($scope, $resource) {
     });
   };
 
-  var new_procedure = $resource('/procedures.json');
-
   $scope.create = function () {
-    new_procedure.save({ title: term }, function () {
-      console.log(arguments);
-    });
+    location.hash = '#/new_procedure/' + $scope.term;
   };
 }
