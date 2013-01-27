@@ -20,7 +20,7 @@ module NHSHackDay
 
       before do
         Step.conn.redis.flushdb
-        @procedure = seed.(central_venous_catheterisation)
+        @procedure = seed.(cannular_insertion)
       end
 
       describe "GET /steps" do
@@ -68,27 +68,14 @@ module NHSHackDay
         end
       end
 
-      #describe "POST /procedures" do
-        #describe "when procedure does not exist" do
-          #it "creates a new one and returns status 201" do
-            #post("/procedures", lumbar_puncture)
-            #last_response.status.must_equal 201
-            #body.keys.must_include :id
-          #end
-        #end
-
-        #describe "when procedure exists" do
-          #before do
-            #new_procedure(lumbar_puncture)
-          #end
-
-          #it "won't create a new one and returns status 403" do
-            #post("/procedures", lumbar_puncture)
-            #last_response.headers['X-Reason'].must_equal 'procedure already exists'
-            #last_response.status.must_equal 403
-          #end
-        #end
-      #end
+      describe "POST /steps" do
+        it "creates a new one and returns status 201" do
+          post("/steps", :title => "Step 1", :procedure_id => @procedure.id)
+          last_response.status.must_equal 201
+          body[:procedure_id].must_equal @procedure.id.to_i
+          body[:title].must_equal "Step 1"
+        end
+      end
     end
   end
 end

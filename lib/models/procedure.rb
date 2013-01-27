@@ -5,6 +5,9 @@ class Procedure < Ohm::Model
 
   attribute :title
   attribute :snomed_id
+  attribute :consent
+  attribute :materials
+  attribute :precautions
   collection :steps, :Step
   reference :user, :User
 

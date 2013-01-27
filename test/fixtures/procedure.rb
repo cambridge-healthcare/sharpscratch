@@ -24,15 +24,16 @@ module Fixtures
   def all_procedures
     [
       lumbar_puncture,
-      arterial_blood_gas_sampling,
-      central_venous_catheterisation
+      arterial_sampling,
+      cannular_insertion
     ]
   end
 
   def lumbar_puncture
     {
-      :title => "Lumbar Puncture",
-      :steps => [
+      :title     => "Lumbar Puncture",
+      :snomed_id => 277762005,
+      :steps     => [
         "Consent",
         "Preparing the materials",
         "Positioning the patient",
@@ -50,17 +51,19 @@ module Fixtures
     }
   end
 
-  def arterial_blood_gas_sampling
+  def arterial_sampling
     {
-      :title => "Arterial Blood Gas Sampling",
-      :steps => []
+      :title     => "Arterial Blood Gas Sampling",
+      :snomed_id => 277762005,
+      :steps     => []
     }
   end
 
-  def central_venous_catheterisation
+  def cannular_insertion
     {
-      :title => "Central Venous Catheterisation",
-      :steps => []
+      :title     => "Central Venous Cannular Insertion",
+      :snomed_id => 233527006,
+      :steps     => []
     }
   end
 end

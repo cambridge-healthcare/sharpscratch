@@ -91,7 +91,7 @@ module NHSHackDay
       describe "GET /search" do
         before do
           @matching = seed.(lumbar_puncture)
-          @non_matching = seed.(arterial_blood_gas_sampling)
+          @non_matching = seed.(arterial_sampling)
         end
 
         describe "when term does not match" do
