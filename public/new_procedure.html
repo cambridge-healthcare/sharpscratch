@@ -1,15 +1,15 @@
 <div class="new_procedure has_top_banner" ng-controller="NewProcedure">
   <form class="form-horizontal" ng-submit="save()">
 
-    <div class="top_banner">
-      <div class="cell">
+    <div class="top_banner"
+      <a href="/index.html" class="cell">
         <img class="logo" src="logo.svg">
-      </div>
+      </a>
       <h1 class="cell">New Procedure</h1>
       <div class="cell">
         <input type="submit" class="btn-primary btn cell" value="Create">
       </div>
-      <div class="messages cell" ng-class="message_class" ng-bind="message">
+      <div class="message" ng-class="message_class" ng-bind="message">
       </div>
     </div>
 

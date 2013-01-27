@@ -28,6 +28,7 @@ function NewProcedure ($scope, $resource, $routeParams) {
 
   $scope.save = function () {
     $scope.message = "Submitting...";
+    $scope.message_class = '';
     var steps = get_values('.step_title', '.step_text');
     var complications = get_values('.complication_title',
       '.complication_text');
@@ -38,7 +39,8 @@ function NewProcedure ($scope, $resource, $routeParams) {
       $scope.message = "Saved.";
       location.hash = '#/procedure/' + answer.id;
     }, function error () {
-      $scope.message = "Coudn't submit your procedure. Try different title.";
+      $scope.message_class = 'error';
+      $scope.message = "Coudn't submit your procedure. Try a different title.";
     });
   };
 }
