@@ -1,12 +1,6 @@
 module NHSHackDay
   module API
     module Helpers
-      def not_found(message)
-        status 404
-        header "X-Reason", message
-        body nil
-      end
-
       def no_content(message)
         status 204
         header "X-Reason", message
@@ -20,9 +14,11 @@ module NHSHackDay
       end
 
       def procedure
-        if p = Procedure[params[:procedure_id]]
-          p.attributes
-        end
+        Procedure[params[:procedure_id]] or raise Procedure::NotFoundError
+      end
+
+      def step
+        Step[params[:step_id]] or raise Step::NotFoundError
       end
     end
   end

@@ -7,10 +7,5 @@ require File.expand_path('../../test/fixtures/procedure', __FILE__)
 require File.expand_path('../../lib/nhs_hack_day', __FILE__)
 
 Fixtures::Procedure.all.each do |procedure|
-  begin
-    Procedure.create(procedure)
-  rescue Ohm::UniqueIndexViolation
-    puts "\n::: Already exists, skipping ".ljust(70, ":::")
-    ap(procedure, indent: -2)
-  end
+  Fixtures.seed.(procedure)
 end
