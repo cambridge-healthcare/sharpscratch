@@ -39,7 +39,7 @@ module NHSHackDay
           it "returns all procedures as array with status 200" do
             get("/procedures")
             last_response.status.must_equal 200
-            body.must_equal [@procedure.attributes]
+            body.sample[:id].must_equal @procedure.id
           end
         end
       end
@@ -61,7 +61,7 @@ module NHSHackDay
           it "returns procedure with status 200" do
             get("/procedures/#{@procedure.id}")
             last_response.status.must_equal 200
-            body.must_equal @procedure.attributes
+            body[:id].must_equal @procedure.id
           end
         end
       end

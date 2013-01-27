@@ -37,10 +37,11 @@ module NHSHackDay
             @procedure = seed.(lumbar_puncture)
           end
 
-          it "returns all procedures as array with status 200" do
+          it "returns all steps as array with status 200" do
             get("/procedures/#{@procedure.id}/steps")
             last_response.status.must_equal 200
-            body.sample.keys.must_equal [:title, :procedure_id, :id]
+            returned_ids = body.map { |s| s[:id] }
+            (@procedure.steps.map(&:id) - returned_ids).must_equal([])
           end
         end
       end
@@ -69,11 +70,20 @@ module NHSHackDay
       end
 
       describe "POST /steps" do
+        before do
+          @new_step = {
+            :title        => "Step 1",
+            :to_do        => "Yes",
+            :to_say       => "Hi",
+            :procedure_id => @procedure.id.to_i
+          }
+        end
         it "creates a new one and returns status 201" do
-          post("/steps", :title => "Step 1", :procedure_id => @procedure.id)
+          post("/steps", @new_step)
           last_response.status.must_equal 201
-          body[:procedure_id].must_equal @procedure.id.to_i
-          body[:title].must_equal "Step 1"
+          @new_step.each do |key, value|
+            body[key].must_equal value
+          end
         end
       end
     end

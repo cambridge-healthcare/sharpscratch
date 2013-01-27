@@ -38,11 +38,15 @@ module NHSHackDay
         params do
           requires :title, :type => String, :desc => "Step title"
           requires :procedure_id, :type => Integer, :desc => "Procedure identifier to which this step belongs to"
+          optional :to_do, :type => String, :desc => "What to do during this step"
+          optional :to_say, :type => String, :desc => "What to say to the patient"
         end
         post '/' do
           begin
             Step.create(
               :title        => params[:title],
+              :to_do        => params[:to_do],
+              :to_say       => params[:to_say],
               :procedure_id => params[:procedure_id]
             ).attributes
           rescue Ohm::UniqueIndexViolation

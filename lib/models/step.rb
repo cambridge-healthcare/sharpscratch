@@ -4,8 +4,8 @@ class Step < Ohm::Model
   include Model
 
   attribute :title
-  collection :alternatives, :Alternative
-  collection :complications, :Complication
+  attribute :to_do
+  attribute :to_say
   collection :comments, :Comment
   reference :procedure, :Procedure
 end
