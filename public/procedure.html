@@ -1,0 +1,36 @@
+<div class="procedure" ng-controller="Procedure" ng-show="show">
+  <h1>{{ title }}</h1>
+
+  <ul class="toc">
+    <li>Consent</li>
+
+    <li class="label">Steps:</li>
+    <li ng-repeat="step in steps"
+        ng-init="active = step.variants[0]">
+      <a href="#step-{{ step.id }}">{{ active.title }}</a>
+    </li>
+  </ul>
+
+  <div class="step" ng-repeat="step in steps" id="step-{{ step.id }}">
+
+    <article class="active">
+      <h2>{{ step.active.title }}</h2>
+      {{ step.active.text }}
+      <h3>What to say?</h3>
+      {{ step.active.say }}
+    </article>
+
+    <div class="rest">
+      <div class="alternatives">
+        <div ng-repeat="variant in step.variants"
+            class="alternative">
+          <div class="points">{{ variant.points }}</div>
+          {{ variant.text }}
+        </div>
+      </div>
+      <div class="comments">
+      </div>
+    </div>
+
+  </div>
+</div>

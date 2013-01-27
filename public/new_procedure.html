@@ -1,0 +1,76 @@
+<div class="new_procedure" ng-controller="NewProcedure" ng-show="show">
+  <form class="form-horizontal" ng-submit="save()">
+    <legend>New Procedure</legend>
+
+    <div class="control-group">
+      <label class="control-label">Title</label>
+      <div class="controls">
+        <input name="title" ng-model="title" type="text" required>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Consent</label>
+      <div class="controls">
+        <textarea name="consent" ng-model="consent"></textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Materials</label>
+      <div class="controls">
+        <textarea name="materials" ng-model="materials"></textarea>
+      </div>
+    </div>
+
+    <legend>Steps</legend>
+
+    <div ng-repeat="step in steps">
+      <div class="control-group">
+        <label class="control-label">Title of {{ $index + 1 }}</label>
+        <div class="controls">
+          <input name="step_title" class="step_title" type="text">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Description</label>
+        <div class="controls">
+          <textarea name="step_text" class="step_text"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn" ng-click="inc(steps)">Add a Step</button>
+      </div>
+    </div>
+
+    <legend>Complications</legend>
+
+    <div ng-repeat="complication in complications">
+      <div class="control-group">
+        <label class="control-label">Title of {{ $index + 1 }}</label>
+        <div class="controls">
+          <input name="complication_title" class="complication_title" type="text">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Description</label>
+        <div class="controls">
+          <textarea name="complication_text" class="complication_text"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn" ng-click="inc(complications)">Add a Complication</button>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary btn" ng-click="save()">Save</button>
+    </div>
+  </form>
+</div>
