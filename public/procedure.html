@@ -7,13 +7,16 @@
   <h1>{{ title }}</h1>
 
   <ul class="toc">
-    <li>Precautions</li>
-    <li>Consent</li>
-    <li>Materials</li>
+    <li>
+      <a ng-click="scroll('precautions')">Precautions</a>
+    </li>
+    <li>
+      <a ng-click="scroll('consent')">Consent</a></li>
+    <li>
+      <a ng-click="scroll('materials')">Materials</a></li>
     <li class="label">Steps:</li>
-    <li ng-repeat="step in steps"
-        ng-init="active = step.variants[0]">
-      <a href="#step-{{ step.id }}">{{ active.title }}</a>
+    <li ng-repeat="step in steps">
+      <a ng-click="scroll('step-' + $index)">{{ step.title }}</a>
     </li>
   </ul>
 
@@ -33,8 +36,8 @@
   </div>
 
 
-  <div class="step" ng-repeat="step in steps" id="step-{{ step.id }}">
-    <h2>{{ step.title }}</h2>
+  <div class="step" ng-repeat="step in steps" id="step-{{$index}}">
+    <h2><span class="index">{{ $index + 1 }}</span> {{ step.title }}</h2>
     <div ng-bind-html-unsafe="marked(step.to_do||'')"></div>
     <h3>What to say?</h3>
     <div ng-bind-html-unsafe="marked(step.to_say||'')"></div>

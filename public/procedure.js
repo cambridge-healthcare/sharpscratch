@@ -4,6 +4,11 @@ function Procedure ($scope, $resource, $routeParams) {
 
   $scope.marked = marked;
 
+  $scope.scroll = function (id) {
+    var element = document.getElementById(id);
+    window.scrollTo(0, element.offsetTop);
+  };
+
   getter.get($routeParams, function success (data) {
     _.extend($scope, data);
   }, function error (data) {
