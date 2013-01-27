@@ -1,8 +1,8 @@
 ruby "1.9.3"
 source 'https://rubygems.org'
 
+gem 'awesome_print', '~> 1.1.0'
 gem 'grape', '~> 0.2.6' # an opinionated micro-framework for creating REST-like APIs in Ruby
-
 gem 'grape-swagger', '~> 0.3.0' # add swagger compliant documentation to your grape API http://swagger.wordnik.com/
 gem 'hiredis', '~> 0.4.5' # C client for Redis
 gem 'ohm', '~> 1.2.0' # Object-hash mapping library for Redis. I've had mixed experiences with pre 1.0 versions. Worth keeping an eye on though.
@@ -11,7 +11,6 @@ gem 'redis', '~> 3.0.2'
 gem 'unicorn', '~> 4.5.0' # rack HTTP server for fast clients and Unix
 
 group :development do
-  gem 'awesome_print', '~> 1.1.0'
   gem 'benchmark-ips', '~> 1.2.0' # iterations per second enhancement to Benchmark
   gem 'pry-debugger', '0.2.1'
   gem 'rake', '~> 10.0.3'
