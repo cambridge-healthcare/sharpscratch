@@ -1,12 +1,21 @@
 function Procedure ($scope, $resource, $routeParams) {
-  var getter = $resource('/procedures/:id.json');
+  var getter       = $resource('/procedures/:id.json');
+  var steps_getter = $resource('/procedures/:id/steps.json');
 
-  getter.get({
-    id: $routeParams.id
-  }, function success (data) {
+  $scope.marked = marked;
+
+  getter.get($routeParams, function success (data) {
     _.extend($scope, data);
   }, function error (data) {
     $scope.message = "Can't retrieve a procedure with a given identificator.";
+    $scope.message_class = "error";
+  });
+
+  steps_getter.query($routeParams, function success (data) {
+    console.log(data);
+    $scope.steps = data;
+  }, function error (data) {
+    $scope.message = "Can't steps for a given identificator.";
     $scope.message_class = "error";
   });
 }
