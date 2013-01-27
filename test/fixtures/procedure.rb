@@ -5,7 +5,7 @@ module Fixtures
     def all
       [
         lumbar_puncture,
-        arterial_black_guess_sampling
+        arterial_blood_gas_sampling
       ]
     end
 
@@ -15,9 +15,9 @@ module Fixtures
       }
     end
 
-    def arterial_black_guess_sampling
+    def arterial_blood_gas_sampling
       {
-        :title => "Arterial Black Guess Sampling"
+        :title => "Arterial Blood Gas Sampling"
       }
     end
   end

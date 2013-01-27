@@ -3,10 +3,10 @@
 require 'bundler/setup'
 require 'ap'
 
-require File.expand_path('../../test/fixtures/procedures', __FILE__)
+require File.expand_path('../../test/fixtures/procedure', __FILE__)
 require File.expand_path('../../lib/nhs_hack_day', __FILE__)
 
-Fixtures::Procedures.all.each do |procedure|
+Fixtures::Procedure.all.each do |procedure|
   begin
     Procedure.create(procedure)
   rescue Ohm::UniqueIndexViolation
