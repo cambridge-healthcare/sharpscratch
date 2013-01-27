@@ -6,6 +6,6 @@ require 'ap'
 require File.expand_path('../../test/fixtures/procedure', __FILE__)
 require File.expand_path('../../lib/nhs_hack_day', __FILE__)
 
-Fixtures::Procedure.all.each do |procedure|
+Fixtures::all_procedures.each do |procedure|
   Fixtures.seed.(procedure)
 end
