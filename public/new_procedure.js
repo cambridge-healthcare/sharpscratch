@@ -31,19 +31,20 @@ function NewProcedure ($scope, $resource, $routeParams) {
   var step_saver = $resource('/steps.json');
 
   function save_steps (proc_id, steps) {
+    console.log(steps);
     if (!steps.length) {
       location.hash = '#/procedure/' + proc_id;
       return;
     }
 
     var step = steps.shift();
-    $scope.message = 'Saving step: ' + (step.id+1) + ' ' + step.title;
+    $scope.message = 'Saving step: ' + step.title;
 
     _.extend(step, { procedure_id: proc_id });
     step_saver.save(step, function success () {
-      save_steps(steps);
+      save_steps(proc_id, steps);
     }, function error () {
-      $scope.message = 'Error saving step: ' + (step.id+1) + ' ' + step.title;
+      $scope.message = 'Error saving step: ' + step.title;
       $scope.message_class = 'error';
     });
   }
@@ -64,7 +65,7 @@ function NewProcedure ($scope, $resource, $routeParams) {
       precautions: $scope.precautions
     }, function success (answer) {
       $scope.message = "Saved procedure.";
-      save_steps(steps);
+      save_steps(answer.id, steps);
     }, function error () {
       $scope.message_class = 'error';
       $scope.message = "Coudn't submit your procedure. Try a different title.";
