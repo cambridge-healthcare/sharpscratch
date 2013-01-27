@@ -16,7 +16,7 @@ worker_processes ENV.fetch('API_INSTANCES', 1).to_i
 # The shorter backlog ensures quicker failover when busy, and helps the
 # load balancer spread requests evenly.
 listen ENV.fetch('PORT', 6000), backlog: ENV.fetch('TCP_BACKLOG', 1024).to_i
-listen ENV.fetch('SOCKET','/tmp/nhshd.api.sock'), :backlog => ENV.fetch('UNIX_BACKLOG', 1024).to_i
+listen ENV.fetch('SOCKET','/tmp/sharpscratch.api.sock'), :backlog => ENV.fetch('UNIX_BACKLOG', 1024).to_i
 
 # Sets the timeout of worker processes to seconds. Workers handling the
 # request/app.call/response cycle taking longer than this time period
@@ -32,7 +32,7 @@ listen ENV.fetch('SOCKET','/tmp/nhshd.api.sock'), :backlog => ENV.fetch('UNIX_BA
 timeout ENV.fetch('API_TIMEOUT', 30).to_i
 
 # PID of the unicorn master process
-pid ENV.fetch('API_PID', '/tmp/nhshd.api.pid')
+pid ENV.fetch('API_PID', '/tmp/sharpscratch.api.pid')
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, some applications/frameworks log to stderr or stdout,
