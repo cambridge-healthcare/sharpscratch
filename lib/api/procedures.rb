@@ -6,8 +6,14 @@ require_relative 'helpers'
 module NHSHackDay
   module API
     class Procedures < Grape::API
+      include Helpers
+
       default_format :json
       format :json
+
+      rescue_from Model::NotFoundError do
+        rack_response("", 204, 'X-Reason' => "record could not be found")
+      end
 
       helpers Helpers
 
@@ -22,7 +28,7 @@ module NHSHackDay
           requires :procedure_id, :type => Integer, :desc => "Procedure identifier"
         end
         get '/:procedure_id' do
-          procedure or not_found('procedure could not be found')
+          procedure.attributes
         end
 
         desc "Creates a new procedure"

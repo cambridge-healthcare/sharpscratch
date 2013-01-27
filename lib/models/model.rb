@@ -6,4 +6,6 @@ module Model
   def attributes
     super.merge(:id => id)
   end
+
+  NotFoundError = Class.new(StandardError)
 end
